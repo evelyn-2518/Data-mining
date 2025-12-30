@@ -11,7 +11,7 @@
 * **互動式介面：** 支援 **Gradio UI**，可實現即時氣象機率預測與視覺化展示 。
 
 ## 實驗結果
-[cite_start]模型於獨立測試集（16,266 筆資料）上的評估結果如下 [cite: 480, 514]：
+模型於獨立測試集（16,266 筆資料）上的評估結果如下：
 
 | 指標 (Metric) | 數值 (Value) |
 | :--- | :--- |
@@ -44,3 +44,17 @@
 3. 機率預測機制說明
 * 「60% 下雨」的含義：代表森林中 300 棵決策樹中，有 180 棵樹根據觀測特徵投票判定為降雨。
 * 決策門檻：經優化設定為 51.5%。當森林投票比例超過此門檻，系統即判定為預測下雨。
+## 檔案架構
+```text
+.
+├── models/
+│   ├── random_forest_final_model.pth  # 訓練完成之模型檔案
+│   ├── scaler.joblib                  # 數值標準化轉換器
+│   └── model_features.joblib          # 特徵欄位清單
+├── processed_data/
+│   ├── X_train_resampled.csv          # SMOTE 後訓練集
+│   └── X_test.csv                     # 標準化測試集
+├── predata.ipynb                      # 資料前處理腳本
+├── train_model.ipynb                  # 模型訓練與評估腳本
+└── README.md
+```
